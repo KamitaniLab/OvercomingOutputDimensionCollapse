@@ -4,7 +4,7 @@ settings=(
   "1200"
   "600"
   "300"
-  # "150"
+  "150"
 )
 test_dataset_names=(
   "ImageNetTest"

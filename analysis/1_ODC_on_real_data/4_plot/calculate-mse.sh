@@ -2,9 +2,9 @@
 
 settings=(
   "1200"
-  # "600"
-  # "300"
-  # "150"
+  "600"
+  "300"
+  "150"
 )
 test_dataset_names=(
   "ImageNetTest"

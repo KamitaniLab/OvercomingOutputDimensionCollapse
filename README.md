@@ -24,7 +24,7 @@ uv sync
 
 Place the true features of each dataset in `data/features`, the fMRI data (.h5) of each dataset in `data/fmri`, and the model parameters (.pt) in `data/model_shared`.
 
-Features and fMRI data can be downloaded from [https://figshare.com/articles/dataset/Deep_Image_Reconstruction/7033577]. Model parameters can be downloaded from [https://figshare.com/articles/dataset/Spurious_reconstruction_from_brain_activity/27013342].
+Features and fMRI data can be downloaded from [here](https://figshare.com/articles/dataset/Deep_Image_Reconstruction/7033577). Model parameters can be downloaded from [here](https://figshare.com/articles/dataset/Spurious_reconstruction_from_brain_activity/27013342).
 
 ### ODC on Real Data Analysis
 

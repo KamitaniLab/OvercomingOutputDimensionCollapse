@@ -85,7 +85,10 @@ bash analysis/2_sparse_regression/1_simulation/simulation.sh
 ├── data/                                       # Downloaded data
 │   ├── features/                               # True features
 │   ├── fmri/                                   # fMRI data
-│   └── model_shared/                           # Model parameters
+│   └── models_shared/                          # Model parameters
+├── scripts/                                    # Utility scripts
+│   ├── download.py                             # Data download script
+│   └── download_files.json                     # Download configuration
 └── README.md                                   # This file
 ```
 

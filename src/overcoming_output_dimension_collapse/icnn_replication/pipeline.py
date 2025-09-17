@@ -9,6 +9,7 @@ from .critic import Critic
 from .encoder import Encoder
 from .generator import Generator
 
+
 class FeatureInversionPipeline:
     """Feature inversion pipeline
 
@@ -58,8 +59,11 @@ class FeatureInversionPipeline:
             self.critic.enable_wandb()
 
     def __call__(
-            self, target_features: dict[str, torch.Tensor], max_trials: int = 1, loss_threshold: float | None = None,
-            ) -> torch.Tensor:
+        self,
+        target_features: dict[str, torch.Tensor],
+        max_trials: int = 1,
+        loss_threshold: float | None = None,
+    ) -> torch.Tensor:
         """Forward pass through the iCNN pipeline.
 
         Parameters
@@ -88,11 +92,15 @@ class FeatureInversionPipeline:
                     wandb.log({"loss": loss.mean().item()})
 
                 if self.log_interval > 0 and step % self.log_interval == 0:
-                    print(f"Step [{step+1}/{self.num_iterations}]: loss={loss.mean().item():.4f}")
+                    print(
+                        f"Step [{step+1}/{self.num_iterations}]: loss={loss.mean().item():.4f}"
+                    )
             if loss_threshold is None or loss.mean().item() < loss_threshold:
                 break
             else:
-                print(f"Loss is not less than {loss_threshold} on trial {trial+1}, retrying...")
+                print(
+                    f"Loss is not less than {loss_threshold} on trial {trial+1}, retrying..."
+                )
 
         return self.generator().detach()
 

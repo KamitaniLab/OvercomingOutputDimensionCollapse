@@ -76,7 +76,8 @@ class Critic(nn.Module, ABC):
             )
             if self.with_wandb:
                 wandb.log(
-                    {f"critic/{layer_name}": layer_wise_loss.mean().item()}, commit=False
+                    {f"critic/{layer_name}": layer_wise_loss.mean().item()},
+                    commit=False,
                 )
             loss += layer_wise_loss
             counts += 1
@@ -112,49 +113,72 @@ class TargetNormalizedMSE(Critic):
         tf = target_feature / target_norm
         return (f - tf).pow(2).sum(dim=tuple(range(1, target_feature.ndim)))
 
+
 class DistsLoss(Critic):
     def criterion(
-        self, feature: torch.Tensor, target_feature: torch.Tensor, layer_name: str,
-        eps: float = 1e-6, alpha: float = 1.0, beta: float = 1.0
+        self,
+        feature: torch.Tensor,
+        target_feature: torch.Tensor,
+        layer_name: str,
+        eps: float = 1e-6,
+        alpha: float = 1.0,
+        beta: float = 1.0,
     ) -> torch.Tensor:
-        if 'classifier' in layer_name:
+        if "classifier" in layer_name:
             # feature.shape = (batch_size, feature_dim)
             # target_feature.shape = (batch_size, feature_dim)
-            feature_mean = feature.mean(dim=1, keepdim=True) # (batch_size, 1)
-            target_feature_mean = target_feature.mean(dim=1, keepdim=True) # (batch_size, 1)
-            feature_var = ((feature - feature_mean) ** 2).mean(dim=1, keepdim=True) # (batch_size, 1)
-            target_feature_var = ((target_feature - target_feature_mean) ** 2).mean(dim=1, keepdim=True) # (batch_size, 1)
-            cov = ((feature - feature_mean) * (target_feature - target_feature_mean)).mean(dim=1, keepdim=True) # (batch_size, 1)
+            feature_mean = feature.mean(dim=1, keepdim=True)  # (batch_size, 1)
+            target_feature_mean = target_feature.mean(dim=1, keepdim=True)  # (batch_size, 1)
+            feature_var = ((feature - feature_mean) ** 2).mean(dim=1, keepdim=True)  # (batch_size, 1)
+            target_feature_var = ((target_feature - target_feature_mean) ** 2).mean(
+                dim=1, keepdim=True
+            )  # (batch_size, 1)
+            cov = (
+                (feature - feature_mean) * (target_feature - target_feature_mean)
+            ).mean(dim=1, keepdim=True)  # (batch_size, 1)
         else:
             # feature.shape = (batch_size, channel, height, width)
             # target_feature.shape = (batch_size, channel, height, width)
-            feature_mean = feature.mean(dim=[2,3], keepdim=True) # (batch_size, channel, 1, 1)
-            target_feature_mean = target_feature.mean(dim=[2,3], keepdim=True) # (batch_size, channel, 1, 1)
-            feature_var = ((feature - feature_mean) ** 2).mean(dim=[2,3], keepdim=True) # (batch_size, channel, 1, 1)
-            target_feature_var = ((target_feature - target_feature_mean) ** 2).mean(dim=[2,3], keepdim=True) # (batch_size, channel, 1, 1)
-            cov = ((feature - feature_mean) * (target_feature - target_feature_mean)).mean(dim=[2,3], keepdim=True) # (batch_size, channel, 1, 1)
+            feature_mean = feature.mean(dim=[2, 3], keepdim=True)  # (batch_size, channel, 1, 1)
+            target_feature_mean = target_feature.mean(dim=[2, 3], keepdim=True)  # (batch_size, channel, 1, 1)
+            feature_var = ((feature - feature_mean) ** 2).mean(dim=[2, 3], keepdim=True)  # (batch_size, channel, 1, 1)
+            target_feature_var = ((target_feature - target_feature_mean) ** 2).mean(
+                dim=[2, 3], keepdim=True
+            )  # (batch_size, channel, 1, 1)
+            cov = (
+                (feature - feature_mean) * (target_feature - target_feature_mean)
+            ).mean(dim=[2, 3], keepdim=True)  # (batch_size, channel, 1, 1)
 
-        s1 = (2 * feature_mean * target_feature_mean + eps) / (feature_mean ** 2 + target_feature_mean ** 2 + eps) # (batch_size, ...)
-        s2 = (2 * cov + eps) / (feature_var + target_feature_var + eps) # (batch_size, ...)
+        s1 = (2 * feature_mean * target_feature_mean + eps) / (
+            feature_mean**2 + target_feature_mean**2 + eps
+        )  # (batch_size, ...)
+        s2 = (2 * cov + eps) / (feature_var + target_feature_var + eps)  # (batch_size, ...)
 
-        return - (alpha * s1 + beta * s2).mean(dim=tuple(range(1, s1.ndim))) / (alpha + beta)
+        return -(alpha * s1 + beta * s2).mean(dim=tuple(range(1, s1.ndim))) / (
+            alpha + beta
+        )
+
 
 class CombinationLoss(Critic):
     """Combination of other Critics"""
 
-    def __init__(self, critics: list[Critic], weights: list[float], with_wandb: bool = False) -> None:
+    def __init__(
+        self, critics: list[Critic], weights: list[float], with_wandb: bool = False
+    ) -> None:
         super().__init__(with_wandb=with_wandb)
         self.critics = critics
         self.weights = weights
 
     def criterion(
-            self, feature: torch.Tensor, target_feature: torch.Tensor, layer_name: str
+        self, feature: torch.Tensor, target_feature: torch.Tensor, layer_name: str
     ) -> torch.Tensor:
         pass
 
     def forward(
-            self, features: dict[str, torch.Tensor], target_features: dict[str, torch.Tensor]
-            ) -> torch.Tensor:
+        self,
+        features: dict[str, torch.Tensor],
+        target_features: dict[str, torch.Tensor],
+    ) -> torch.Tensor:
         loss = 0.0
         for critic, weight in zip(self.critics, self.weights):
             loss += weight * critic(features, target_features)

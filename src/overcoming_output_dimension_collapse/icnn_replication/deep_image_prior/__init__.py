@@ -7,6 +7,7 @@ import torch.nn as nn
 
 from .unet import UNet
 
+
 def get_net(input_depth, NET_TYPE, pad, upsample_mode):
     assert NET_TYPE == "UNet"
     net = UNet(
@@ -19,6 +20,6 @@ def get_net(input_depth, NET_TYPE, pad, upsample_mode):
         pad=pad,
         norm_layer=nn.BatchNorm2d,
         need_sigmoid=True,
-        need_bias=True
+        need_bias=True,
     )
     return net

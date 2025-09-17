@@ -1,0 +1,176 @@
+{
+  "basic_data": {
+    "zip": false,
+    "save_in": "./downloads",
+    "files": [
+      {
+        "md5sum": "49f4d6dbf1024f33149352dfd309dc4d",
+        "name": "VGG_ILSVRC_19_layers.zip",
+        "url": "https://figshare.com/ndownloader/files/38225868",
+        "postproc": [
+          { "name": "unzip", "destination": "./data/models_shared/pytorch" }
+        ]
+      },
+
+      {
+        "md5sum": "f0aba2065e03a518681ceec65674026b",
+        "name": "sub-01_ImageNetTraining_fmriprep_volume_native.h5",
+        "url": "https://figshare.com/ndownloader/files/37838826",
+        "postproc": [{ "name": "copy", "destination": "./data/fmri" }]
+      },
+      {
+        "md5sum": "7ab3fd8900a766a79e3f266ff223302a",
+        "name": "sub-01_ImageNetTest_fmriprep_volume_native.h5",
+        "url": "https://figshare.com/ndownloader/files/37838595",
+        "postproc": [{ "name": "copy", "destination": "./data/fmri" }]
+      },
+      {
+        "md5sum": "2899d192ffd55973d08d420d20a6c401",
+        "name": "sub-01_ArtificialShapes_fmriprep_volume_native.h5",
+        "url": "https://figshare.com/ndownloader/files/37838487",
+        "postproc": [{ "name": "copy", "destination": "./data/fmri" }]
+      },
+
+      {
+        "md5sum": "331c7ca0c51f79ad6b32435f3e839fdc",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv1_1.zip",
+        "url": "https://figshare.com/ndownloader/files/24602345",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "0b640a7d9020026581b49b18bb1d0cf0",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv1_2.zip",
+        "url": "https://figshare.com/ndownloader/files/24603074",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "b745445180117bec69a3ddadd68daebd",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv2_1.zip",
+        "url": "https://figshare.com/ndownloader/files/24601943",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "04feba7fd2579627e10ea5e898815d19",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv2_2.zip",
+        "url": "https://figshare.com/ndownloader/files/24601970",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "4937aa31b5cc41088c1184f85cfeb61c",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv3_1.zip",
+        "url": "https://figshare.com/ndownloader/files/24600110",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "9c91c27f035ddf39faa3a0b19ebf3da2",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv3_2.zip",
+        "url": "https://figshare.com/ndownloader/files/24600194",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "2a27e61160c1a16513f4d07e1d7c8a16",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv3_3.zip",
+        "url": "https://figshare.com/ndownloader/files/24600341",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "271bbae0b767a70ecf69e03dc68c134f",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv3_4.zip",
+        "url": "https://figshare.com/ndownloader/files/24600410",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "1d66776bbdce34c7fc4dd56cff49593f",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv4_1.zip",
+        "url": "https://figshare.com/ndownloader/files/24599945",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "42d866f3299704e2a5fe7fea4b0a6daf",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv4_2.zip",
+        "url": "https://figshare.com/ndownloader/files/24599966",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "295f7932e3a77cb1a5d5802a3da7d94d",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv4_3.zip",
+        "url": "https://figshare.com/ndownloader/files/24600041",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "1d7a09b7f9e07ca8e0b4c9592385d413",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv4_4.zip",
+        "url": "https://figshare.com/ndownloader/files/24600077",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "db187f45357c362b2bd8c72a9554b54f",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv5_1.zip",
+        "url": "https://figshare.com/ndownloader/files/24599762",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "5e69c29cc779ed9ec80452cb2f4f6885",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv5_2.zip",
+        "url": "https://figshare.com/ndownloader/files/24599798",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "d079af7f0c67b51af301b773d505e662",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv5_3.zip",
+        "url": "https://figshare.com/ndownloader/files/24599804",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "fed5406a03f2449810fe3b2ac26dd0e9",
+        "name": "features-ImageNetTraining-caffe-VGG19-conv5_4.zip",
+        "url": "https://figshare.com/ndownloader/files/24599864",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "a15194da00a0988707939b1ab949b83b",
+        "name": "features-ImageNetTraining-caffe-VGG19-fc6.zip",
+        "url": "https://figshare.com/ndownloader/files/24599717",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "63052990881490470575cb002373ba67",
+        "name": "features-ImageNetTraining-caffe-VGG19-fc7.zip",
+        "url": "https://figshare.com/ndownloader/files/24599723",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+      {
+        "md5sum": "8670d6adaff3884f62f7f4aff95fc113",
+        "name": "features-ImageNetTraining-caffe-VGG19-fc8.zip",
+        "url": "https://figshare.com/ndownloader/files/24599738",
+        "postproc": [{ "name": "unzip", "destination": "./data" }]
+      },
+
+      {
+        "md5sum": "dae20bbd2e368a2f7c7cc1347cc5d35e",
+        "name": "data-ImageNetTest-derivatives-features-caffe-VGG_ILSVRC_19_layers.zip",
+        "url": "https://figshare.com/ndownloader/files/49538064",
+        "postproc": [
+          {
+            "name": "unzip-reorganize",
+            "destination": "./data/features/ImageNetTest/caffe/VGG19",
+            "source_pattern": "data/ImageNetTest/derivatives/features/caffe/VGG_ILSVRC_19_layers"
+          }
+        ]
+      },
+
+      {
+        "md5sum": "039590d3dafb7b7631aa0514626549ac",
+        "name": "data-ArtificialShapes-derivatives-features-caffe-VGG_ILSVRC_19_layers.zip",
+        "url": "https://figshare.com/ndownloader/files/49536951",
+        "postproc": [
+          {
+            "name": "unzip-reorganize",
+            "destination": "./data/features/ArtificialShapes/caffe/VGG19",
+            "source_pattern": "data/ArtificialShapes/derivatives/features/caffe/VGG_ILSVRC_19_layers"
+          }
+        ]
+      }
+    ]
+  }
+}

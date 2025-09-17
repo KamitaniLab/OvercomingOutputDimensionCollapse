@@ -22,9 +22,23 @@ uv sync
 
 ### Dataset Download
 
-Place the true features of each dataset in `data/features`, the fMRI data (.h5) of each dataset in `data/fmri`, and the model parameters (.pt) in `data/model_shared`.
+Download the required datasets using the provided script:
 
-Features and fMRI data can be downloaded from [here](https://figshare.com/articles/dataset/Deep_Image_Reconstruction/7033577). Model parameters can be downloaded from [here](https://figshare.com/articles/dataset/Spurious_reconstruction_from_brain_activity/27013342).
+```bash
+uv run python scripts/download.py
+```
+
+This will automatically download and organize the following data:
+
+- True features of each dataset in `data/features`
+- fMRI data (.h5) of each dataset in `data/fmri`
+- Model parameters in `data/models_shared`
+
+The script downloads data from:
+
+- [Deep Image Reconstruction](https://figshare.com/articles/dataset/Deep_Image_Reconstruction/7033577)
+- [brain-decoding-cookbook](https://figshare.com/articles/dataset/brain-decoding-cookbook/21564384)
+- [Spurious reconstruction from brain activity](https://figshare.com/articles/dataset/Spurious_reconstruction_from_brain_activity/27013342)
 
 ### ODC on Real Data Analysis
 
@@ -61,19 +75,22 @@ bash analysis/2_sparse_regression/1_simulation/simulation.sh
 ## Project Structure
 
 ```
-├── src/overcoming_output_dimension_collapse/    # Main package
+├── src/overcoming_output_dimension_collapse/   # Main package
 │   ├── icnn_replication/                       # iCNN replication code
-│   └── sparse_regression/                      # Sparse regression implementation
+│   └── sparse_regression/                      # Sparse regression code
 ├── analysis/                                   # Analysis pipelines
-│   ├── 1_ODC_on_real_data/                    # Real data ODC analysis
-│   └── 2_sparse_regression/                   # Sparse regression analysis
+│   ├── 1_ODC_on_real_data/                     # Real data ODC analysis
+│   └── 2_sparse_regression/                    # Sparse regression analysis
 ├── assets/                                     # Generated results and data
-└── pyproject.toml                             # Project configuration
+├── data/                                       # Downloaded data
+│   ├── features/                               # True features
+│   ├── fmri/                                   # fMRI data
+│   └── model_shared/                           # Model parameters
+└── README.md                                   # This file
 ```
 
 ## Usage Notes
 
-- All analysis scripts should be run from the project root directory
+- All scripts should be run from the project root directory
 - The analysis pipelines take significant time to complete
-- Results are saved in the `assets/` directory
 - Use VS Code's Interactive Window for plotting scripts (execute `# %%` cells)

@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 import numpy as np
 import torch
 import torch.nn as nn
-from torchvision.transforms.v2 import InterpolationMode, Resize, CenterCrop
+from torchvision.transforms.v2 import CenterCrop, InterpolationMode, Resize
 
 """Definition of the common image domain.
 
@@ -14,6 +14,7 @@ from torchvision.transforms.v2 import InterpolationMode, Resize, CenterCrop
 - Image size: arbitrary
 - Color space: RGB
 """
+
 
 # DEFAULT_CHANNEL_AXIS = 1
 # DEFAULT_MIN_PIXEL_VALUE = -0.5
@@ -206,6 +207,7 @@ class FixedResolutionDomain(ImageDomain):
     def receive(self, images: torch.Tensor) -> torch.Tensor:
         return self.resizer(images)
 
+
 class CenterCropDomain(ImageDomain):
     """Image domain for images with fixed resolution."""
 
@@ -220,9 +222,7 @@ class CenterCropDomain(ImageDomain):
         # self.interpolation = interpolation
         # self.antialias = antialias
 
-        self.resizer = CenterCrop(
-            size=image_shape
-        )
+        self.resizer = CenterCrop(size=image_shape)
 
     def send(self, images: torch.Tensor) -> torch.Tensor:
         raise RuntimeError(

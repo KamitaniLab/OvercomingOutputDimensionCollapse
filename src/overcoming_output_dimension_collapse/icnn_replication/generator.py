@@ -6,7 +6,6 @@ import torch
 import torch.nn as nn
 
 from . import deep_image_prior, image_domain
-import numpy as np
 
 
 @torch.no_grad()
@@ -37,6 +36,7 @@ class Generator(nn.Module, ABC):
     def reset_states(self) -> None:
         """Reset the state of the generator."""
         pass
+
 
 class DeepImagePriorGenerator(Generator):
     def __init__(

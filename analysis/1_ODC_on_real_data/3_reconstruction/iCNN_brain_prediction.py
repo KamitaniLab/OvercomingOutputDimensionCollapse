@@ -7,8 +7,12 @@ from typing import Any
 import numpy as np
 import torch
 import torch.optim as optim
+import wandb
 from bdpy.dataform import DecodedFeatures
 from bdpy.dl.torch.models import VGG19, layer_map
+from PIL import Image
+from torch.utils.data import DataLoader
+
 from overcoming_output_dimension_collapse.icnn_replication import image_domain
 from overcoming_output_dimension_collapse.icnn_replication.critic import (
     TargetNormalizedMSE,
@@ -24,10 +28,6 @@ from overcoming_output_dimension_collapse.icnn_replication.generator import (
 from overcoming_output_dimension_collapse.icnn_replication.pipeline import (
     FeatureInversionPipeline,
 )
-from PIL import Image
-from torch.utils.data import DataLoader
-
-import wandb
 
 
 def parse_arguments():

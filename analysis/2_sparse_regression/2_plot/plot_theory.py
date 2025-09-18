@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib.colors import LinearSegmentedColormap
+
 from overcoming_output_dimension_collapse.sparse_regression.solve_theory import (
     SparseRegressionTheory,
 )

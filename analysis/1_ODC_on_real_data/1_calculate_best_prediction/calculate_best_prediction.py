@@ -8,11 +8,12 @@ from pathlib import Path
 import numpy as np
 from bdpy.dataform import Features, save_array
 from bdpy.dl.torch.models import layer_map
+from torch.utils.data import DataLoader
+
 from overcoming_output_dimension_collapse.icnn_replication.dataset import (
     FeaturesDataset,
     RenameFeatureKeys,
 )
-from torch.utils.data import DataLoader
 
 
 def parse_arguments():

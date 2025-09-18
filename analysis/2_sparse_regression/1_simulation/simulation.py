@@ -5,6 +5,9 @@ from functools import partialmethod
 
 import numpy as np
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from tqdm import tqdm
+
 from overcoming_output_dimension_collapse.sparse_regression.fast_ridge import FastRidge
 from overcoming_output_dimension_collapse.sparse_regression.fastl2lir_pro import (
     FastL2LiR,
@@ -12,8 +15,6 @@ from overcoming_output_dimension_collapse.sparse_regression.fastl2lir_pro import
 from overcoming_output_dimension_collapse.sparse_regression.solve_theory import (
     SparseRegressionTheory,
 )
-from sklearn.preprocessing import StandardScaler
-from tqdm import tqdm
 
 tqdm.__init__ = partialmethod(tqdm.__init__, disable=True)
 

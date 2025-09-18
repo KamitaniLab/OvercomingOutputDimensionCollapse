@@ -19,7 +19,6 @@ if pv.major > 3 or (pv.major == 3 and pv.minor >= 5):
 # FUNCTIONS ##################################################################
 import time
 
-import numpy as np
 from numba import njit, prange, set_num_threads
 
 

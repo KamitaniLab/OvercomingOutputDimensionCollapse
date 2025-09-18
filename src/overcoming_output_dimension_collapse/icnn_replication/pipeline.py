@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import torch
 import torch.optim as optim
-
 import wandb
 
 from .critic import Critic

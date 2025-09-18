@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 from bdpy.dataform import Features
 from bdpy.dl.torch.models import layer_map
+
 from overcoming_output_dimension_collapse.icnn_replication.dataset import (
     DecodedFeaturesDataset,
     FeaturesDataset,

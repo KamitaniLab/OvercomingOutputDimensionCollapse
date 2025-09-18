@@ -118,7 +118,7 @@
       {
         "md5sum": "d079af7f0c67b51af301b773d505e662",
         "name": "features-ImageNetTraining-caffe-VGG19-conv5_3.zip",
-        "url": "https://figshare.com/ndownloader/files/24599804",
+        "url": "https://figshare.com/ndownloader/files/24599798",
         "postproc": [{ "name": "unzip", "destination": "./data" }]
       },
       {

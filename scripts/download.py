@@ -7,48 +7,6 @@ from glob import glob
 from bdpy.dataset.utils import download_file
 
 
-def is_postprocess_completed(output_path, postproc_name, postproc_config):
-    """Check if postprocess has already been completed by examining output files/directories"""
-    
-    if postproc_name == "merge":
-        # For merge, check if the final output file exists
-        return os.path.exists(output_path)
-    
-    elif postproc_name == "unzip":
-        dest = postproc_config.get("destination")
-        if not dest:
-            return False
-        # Check if destination directory exists and has content
-        if not os.path.exists(dest):
-            return False
-        try:
-            return len(os.listdir(dest)) > 0
-        except OSError:
-            return False
-    
-    elif postproc_name == "unzip-reorganize":
-        dest = postproc_config.get("destination")
-        if not dest:
-            return False
-        # Check if destination directory exists and has content
-        if not os.path.exists(dest):
-            return False
-        try:
-            return len(os.listdir(dest)) > 0
-        except OSError:
-            return False
-    
-    elif postproc_name == "copy":
-        dest = postproc_config.get("destination")
-        if not dest:
-            return False
-        # Check if the copied file exists in destination
-        copied_file = os.path.join(dest, os.path.basename(output_path))
-        return os.path.exists(copied_file)
-    
-    return False
-
-
 def main(cfg):
     with open(cfg.filelist) as f:
         filelist = json.load(f)
@@ -76,11 +34,6 @@ def main(cfg):
         # Postprocessing
         if "postproc" in fl:
             for pp in fl["postproc"]:
-                # Check if this postprocess has already been completed
-                if is_postprocess_completed(output, pp["name"], pp):
-                    print(f"Skipping {pp['name']} for {output} (already completed)")
-                    continue
-                
                 if pp["name"] == "merge":
                     if os.path.exists(output):
                         continue

@@ -18,6 +18,11 @@ This project uses `uv` for dependency management. Install dependencies with:
 uv sync
 ```
 
+## Requirements
+
+- GPU with CUDA support (recommended)
+- Sufficient RAM (recommended: 16GB+) for large matrix operations
+
 ## Quick Start
 
 ### Dataset Download
@@ -36,9 +41,9 @@ This will automatically download and organize the following data:
 
 The script downloads data from:
 
-- [Deep Image Reconstruction](https://figshare.com/articles/dataset/Deep_Image_Reconstruction/7033577)
-- [brain-decoding-cookbook](https://figshare.com/articles/dataset/brain-decoding-cookbook/21564384)
-- [Spurious reconstruction from brain activity](https://figshare.com/articles/dataset/Spurious_reconstruction_from_brain_activity/27013342)
+- [Deep Image Reconstruction@figshare](https://figshare.com/articles/dataset/Deep_Image_Reconstruction/7033577)
+- [brain-decoding-cookbook@figshare](https://figshare.com/articles/dataset/brain-decoding-cookbook/21564384)
+- [Spurious reconstruction from brain activity@figshare](https://figshare.com/articles/dataset/Spurious_reconstruction_from_brain_activity/27013342)
 
 ### ODC on Real Data Analysis
 
@@ -72,28 +77,21 @@ bash analysis/2_sparse_regression/1_simulation/simulation.sh
 - `analysis/2_sparse_regression/2_plot/plot_simulation.py` - Plot simulation results
 - `analysis/2_sparse_regression/2_plot/plot_theory.py` - Plot theoretical results
 
-## Project Structure
-
-```
-├── src/overcoming_output_dimension_collapse/   # Main package
-│   ├── icnn_replication/                       # iCNN replication code
-│   └── sparse_regression/                      # Sparse regression code
-├── analysis/                                   # Analysis pipelines
-│   ├── 1_ODC_on_real_data/                     # Real data ODC analysis
-│   └── 2_sparse_regression/                    # Sparse regression analysis
-├── assets/                                     # Generated results and data
-├── data/                                       # Downloaded data
-│   ├── features/                               # True features
-│   ├── fmri/                                   # fMRI data
-│   └── models_shared/                          # Model parameters
-├── scripts/                                    # Utility scripts
-│   ├── download.py                             # Data download script
-│   └── download_files.json                     # Download configuration
-└── README.md                                   # This file
-```
-
-## Usage Notes
+### Usage Notes
 
 - All scripts should be run from the project root directory
 - The analysis pipelines take significant time to complete
 - Use VS Code's Interactive Window for plotting scripts (execute `# %%` cells)
+
+## Project Structure
+
+```
+├── analysis/                                   # Analysis pipelines
+│   ├── 1_ODC_on_real_data/                         # Real data ODC analysis
+│   └── 2_sparse_regression/                        # Sparse regression analysis
+├── src/overcoming_output_dimension_collapse/   # Library
+├── assets/                                     # Generated results and data
+├── data/                                       # Downloaded data
+├── scripts/                                    # Data download script
+└── README.md                                   # This file
+```
